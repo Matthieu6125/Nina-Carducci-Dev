@@ -43,7 +43,7 @@
   $.fn.mauGallery.defaults = {
     columns: 3,
     lightBox: true,
-    lightboxId: null,
+    lightboxId: 0,
     showTags: true,
     tagsPosition: "bottom",
     navigation: true
@@ -62,7 +62,8 @@
       $.fn.mauGallery.methods.prevImage(options.lightboxId)
     );
     $(".gallery").on("click", ".mg-next", () =>
-      $.fn.mauGallery.methods.nextImage(options.lightboxId)
+      $.fn.mauGallery.methods.nextImage(options.lightboxId),
+      console.log("mg-next à été cliqué")
     );
   };
   $.fn.mauGallery.methods = {
@@ -154,7 +155,7 @@
         }
       });
       next =
-        imagesCollection[index] ||
+        imagesCollection[index-1] ||
         imagesCollection[imagesCollection.length - 1];
       $(".lightboxImage").attr("src", $(next).attr("src"));
     },
@@ -163,6 +164,7 @@
       $("img.gallery-item").each(function() {
         if ($(this).attr("src") === $(".lightboxImage").attr("src")) {
           activeImage = $(this);
+          console.log("activeImage=" + activeImage)
         }
       });
       let activeTag = $(".tags-bar span.active-tag").data("images-toggle");
@@ -170,17 +172,18 @@
       if (activeTag === "all") {
         $(".item-column").each(function() {
           if ($(this).children("img").length) {
-            imagesCollection.push($(this).children("img"));
-          }
+            imagesCollection.push($(this).children("img")[0]);
+            console.log("imagesCollection: ", imagesCollection.map(img => img.src));          }
         });
       } else {
         $(".item-column").each(function() {
           if (
             $(this)
               .children("img")
-              .data("gallery-tag") === activeTag
+              .data("gallery-tag") === activeTag, 
+              console.log("activeTag = " +activeTag)
           ) {
-            imagesCollection.push($(this).children("img"));
+            imagesCollection.push($(this).children("img")[0]);
           }
         });
       }
@@ -192,8 +195,9 @@
           index = i;
         }
       });
-      next = imagesCollection[index] || imagesCollection[0];
+      next = imagesCollection[index+1] || imagesCollection[0];
       $(".lightboxImage").attr("src", $(next).attr("src"));
+      console.log("Next image src: " + $(next).attr("src"));
     },
     createLightBox(gallery, lightboxId, navigation) {
       gallery.append(`<div class="modal fade" id="${
@@ -220,7 +224,7 @@
     },
     showItemTags(gallery, position, tags) {
       var tagItems =
-        '<li class="nav-item"><span class="nav-link active active-tag"  data-images-toggle="all">All</span></li>';
+        '<li class="nav-item"><span class="nav-link active active-tag"  data-images-toggle="all">Tous</span></li>';
       $.each(tags, function(index, value) {
         tagItems += `<li class="nav-item active">
                 <span class="nav-link"  data-images-toggle="${value}">${value}</span></li>`;
