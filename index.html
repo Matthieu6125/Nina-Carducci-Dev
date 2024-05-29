@@ -8,9 +8,26 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Inter&family=Spectral:ital,wght@0,400;1,300;1,400;1,800&display=swap" rel="stylesheet">
 	<meta charset="UTF-8">	
-	<title>Site de la photographe Nina Carducci</title>
+	<title>Photographe professional Nina Carducci</title>
 	<meta name="description" 
 	content="Your photograph Nina Carducci propose her perspective to give you emotion with her photos. Photos shoot: 350€/half-day Retouching: 50€/photo Photo Albums: 400€ letter-sized album (30 double-sided pages)">
+	<script type="application/ld+json">
+		{
+		  "@context": "https://schema.org",
+		  "@type": "Organization",
+		  "address": {
+			"@type": "PostalAddress",
+			"addressLocality": "Bordeaux, France",
+			"postalCode": "F-33200",
+			"streetAddress": "68 avenue Alsace-Lorraine"
+		  },
+		  
+		  "iso6523Code": "0009:44306184100039",
+		  "iso6523Code": "9957:FR64443061841",
+		  "name": "Nina Carducci",
+		  "telephone": "05 56 67 78 89"
+		}
+		</script>
 </head>
 <body>
 <div class="top-header">
@@ -153,6 +170,34 @@
 		</div>
 	</div>
 </div>
+
+<div itemscope itemtype="https://schema.org/Person">
+	<span itemprop="name">Jane Doe</span>
+	<img src="./assets/images/nina.webp" itemprop="image" alt="Photo of Nina Carducci"/>
+  
+	<span itemprop="jobTitle">photograph</span>
+	<div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+	  <span itemprop="streetAddress">
+		20341 Whitworth Institute
+		405 N. Whitworth
+	  </span>
+	  <span itemprop="addressLocality">Seattle</span>,
+	  <span itemprop="addressRegion">WA</span>
+	  <span itemprop="postalCode">98052</span>
+	</div>
+	<span itemprop="telephone">(425) 123-4567</span>
+	<a href="mailto:jane-doe@xyz.edu" itemprop="email">
+	  jane-doe@xyz.edu</a>
+  
+	Jane's home page:
+	<a href="http://www.janedoe.com" itemprop="url">janedoe.com</a>
+  
+	Graduate students:
+	<a href="http://www.xyz.edu/students/alicejones.html" itemprop="colleague">
+	  Alice Jones</a>
+	<a href="http://www.xyz.edu/students/bobsmith.html" itemprop="colleague">
+	  Bob Smith</a>
+  </div>
 </body>
 <script  src="./assets/bootstrap/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
